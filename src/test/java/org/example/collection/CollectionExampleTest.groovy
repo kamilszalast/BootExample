@@ -61,6 +61,7 @@ class CollectionExampleTest extends Specification {
         [daniel, klaudia, sylwia]    | 2
     }
 
+    @Unroll
     def "Metoda sumOfYearsOfUniqueUsers powinna zwrocic #expected gdy lista to : #users"() {
 
         when:
