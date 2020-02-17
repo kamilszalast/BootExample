@@ -8,7 +8,7 @@ import spock.lang.Unroll
 
 class CollectionExampleTest extends Specification {
 
-    CollectionCollectionExample collectionExample = []
+    CollectionsExample collectionExample = []
 
     @Shared
     User daniel = new User("Daniel", Sex.M, 8)
