@@ -32,12 +32,12 @@ public class CollectionsExample implements CollectionExampleInterface {
 
     @Override
     public List<User> getAscendingSortedListByAge(List<User> users) {
-        return users;
+        return Collections.emptyList();
     }
 
     @Override
     public List<User> getUsersWithCorrectAge(List<User> users) {
-        return users;
+        return Collections.emptyList();
     }
 
     @Override
