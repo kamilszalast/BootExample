@@ -1,8 +1,10 @@
 package org.example.collection.beginer;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import org.example.dto.User;
+import org.example.enums.Sex;
 
 public class CollectionsExample implements CollectionExampleInterface {
 
@@ -34,5 +36,10 @@ public class CollectionsExample implements CollectionExampleInterface {
     @Override
     public List<User> getAscendingSortedListByAge(List<User> users) {
         return users;
+    }
+
+    @Override
+    public List<Sex> getUsersWithSupplementedSexType(List<User> users) {
+        return Collections.emptyList();
     }
 }

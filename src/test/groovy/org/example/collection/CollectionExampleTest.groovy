@@ -7,6 +7,8 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import java.util.stream.Collectors
+
 class CollectionExampleTest extends Specification {
 
     CollectionsExample collectionExample = []
@@ -93,7 +95,36 @@ class CollectionExampleTest extends Specification {
         [kamil, daniel, klaudia, sylwia] | [kamil, klaudia, sylwia, daniel]
         [daniel]                         | [daniel]
         [kamil, daniel, klaudia, null]   | [kamil, klaudia, daniel]
-        null | []
+        null                             | []
     }
 
+    @Unroll
+    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #users"() {
+
+        when:
+        List<User> users = createUsersWithName(names as List<String>)
+        def result = collectionExample.getUsersWithSupplementedSexType(users)
+
+        then:
+        result == expected
+
+        where:
+        names                     | expected
+        ["Daniel"]                | [Sex.M]
+        ["Gosia"]                 | [Sex.F]
+        ["Gosia", "Daniel"]       | [Sex.F, Sex.M]
+        ["Gosia", null, "Daniel"] | [Sex.F, Sex.U, Sex.M]
+        [null]                    | [Sex.U]
+        []                        | []
+    }
+    //Groovy nie wspiera lambd
+    List<User> createUsersWithName(List<String> names) {
+        return names.stream()
+                .map({ name -> createUser(name) })
+                .collect(Collectors.&toList()) as List<User>
+    }
+
+    User createUser(String name) {
+        return Optional.ofNullable(name).isPresent() ? new User(name) : null
+    }
 }

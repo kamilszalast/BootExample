@@ -5,8 +5,12 @@ import org.example.enums.Sex;
 public class User {
 
     private final String name;
-    private final Sex sex;
+    private Sex sex;
     private int age;
+
+    public User(String name) {
+        this.name = name;
+    }
 
     public User(String name, Sex sex, int age) {
         this.name = name;
@@ -25,6 +29,10 @@ public class User {
 
     public Sex getSex() {
         return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 
     public int getAge() {
