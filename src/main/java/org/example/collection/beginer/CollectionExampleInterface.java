@@ -1,4 +1,4 @@
-package org.example.collection;
+package org.example.collection.beginer;
 
 import java.util.List;
 import org.example.dto.User;

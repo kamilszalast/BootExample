@@ -1,5 +1,6 @@
 package org.example.collection
 
+import org.example.collection.beginer.CollectionsExample
 import org.example.dto.User
 import org.example.enums.Sex
 import spock.lang.Shared
@@ -92,6 +93,7 @@ class CollectionExampleTest extends Specification {
         [kamil, daniel, klaudia, sylwia] | [kamil, klaudia, sylwia, daniel]
         [daniel]                         | [daniel]
         [kamil, daniel, klaudia, null]   | [kamil, klaudia, daniel]
+        null | []
     }
 
 }

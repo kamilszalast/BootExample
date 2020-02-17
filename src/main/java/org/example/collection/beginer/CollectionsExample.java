@@ -1,4 +1,4 @@
-package org.example.collection;
+package org.example.collection.beginer;
 
 import java.util.HashSet;
 import java.util.List;
