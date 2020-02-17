@@ -1,7 +1,5 @@
 package org.example.dto;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.example.enums.Sex;
 
 public class User {
@@ -9,7 +7,6 @@ public class User {
     private final String name;
     private final Sex sex;
     private int age;
-    private List<User> friends = new ArrayList<>();
 
     public User(String name, Sex sex, int age) {
         this.name = name;
@@ -36,10 +33,6 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public List<User> getFriends() {
-        return friends;
     }
 
 }
