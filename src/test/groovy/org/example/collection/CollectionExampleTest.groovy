@@ -7,6 +7,7 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import java.time.LocalDate
 import java.util.stream.Collectors
 
 class CollectionExampleTest extends Specification {
@@ -99,7 +100,7 @@ class CollectionExampleTest extends Specification {
     }
 
     @Unroll
-    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #users"() {
+    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #names"() {
 
         when:
         List<User> users = createUsersWithName(names as List<String>)
@@ -117,14 +118,54 @@ class CollectionExampleTest extends Specification {
         [null]                    | [Sex.U]
         []                        | []
     }
-    //Groovy nie wspiera lambd
-    List<User> createUsersWithName(List<String> names) {
+
+
+    def "Metoda getUsersWithCorrectAge"() {
+
+        when:
+        List<User> result = collectionExample.getUsersWithCorrectAge(createUsersWithBirthDay())
+
+        then:
+        result.get(0).getName() == "Daniel"
+        result.get(0).getAge() == 3
+
+        result.get(1).getName() == "Jacek"
+        result.get(1).getAge() == 0
+
+        result.get(2).getName() == "Kamil"
+        result.get(2).getAge() == 0
+
+        result.get(3).getName() == "Arek"
+        result.get(3).getAge() == 1
+
+        result.get(4).getName() == "Klaudia"
+        result.get(4).getAge() == 0
+
+        result.get(5).getName() == "Gosia"
+        result.get(5).getAge() == 2
+
+        result.get(6).getName() == "Sylwia"
+        result.get(6).getAge() == 0
+    }
+
+    static List<User> createUsersWithName(List<String> names) {
         return names.stream()
                 .map({ name -> createUser(name) })
                 .collect(Collectors.&toList()) as List<User>
     }
 
-    User createUser(String name) {
+    static User createUser(String name) {
         return Optional.ofNullable(name).isPresent() ? new User(name) : null
+    }
+
+    static List<User> createUsersWithBirthDay() {
+        User u1 = new User("Daniel", LocalDate.now().minusYears(3))
+        User u2 = new User("Jacek", LocalDate.now().plusYears(5))
+        User u3 = new User("Kamil", LocalDate.now().minusDays(364))
+        User u4 = new User("Arek", LocalDate.now().minusDays(365))
+        User u5 = new User("Klaudia", LocalDate.now())
+        User u6 = new User("Gosia", LocalDate.now().minusMonths(24))
+        User u7 = new User("Sylwia", LocalDate.now().plusMonths(36))
+        return Arrays.asList(u1, u2, u3, u4, u5, u6, u7)
     }
 }

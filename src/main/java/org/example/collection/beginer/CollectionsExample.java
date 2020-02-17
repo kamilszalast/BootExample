@@ -20,21 +20,23 @@ public class CollectionsExample implements CollectionExampleInterface {
         return new HashSet<>(users).size();
     }
 
-
     @Override
     public int countOfFemaleUsers(List<User> users) {
         return 0;
     }
-
 
     @Override
     public int sumOfYearsOfUniqueUsers(List<User> users) {
         return 0;
     }
 
-
     @Override
     public List<User> getAscendingSortedListByAge(List<User> users) {
+        return users;
+    }
+
+    @Override
+    public List<User> getUsersWithCorrectAge(List<User> users) {
         return users;
     }
 
