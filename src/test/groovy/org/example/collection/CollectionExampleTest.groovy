@@ -99,27 +99,6 @@ class CollectionExampleTest extends Specification {
         null                             | []
     }
 
-    @Unroll
-    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #names"() {
-
-        when:
-        List<User> users = createUsersWithName(names as List<String>)
-        def result = collectionExample.getUsersWithSupplementedSexType(users)
-
-        then:
-        result == expected
-
-        where:
-        names                     | expected
-        ["Daniel"]                | [Sex.M]
-        ["Gosia"]                 | [Sex.F]
-        ["Gosia", "Daniel"]       | [Sex.F, Sex.M]
-        ["Gosia", null, "Daniel"] | [Sex.F, Sex.U, Sex.M]
-        [null]                    | [Sex.U]
-        []                        | []
-    }
-
-
     def "Metoda getUsersWithCorrectAge"() {
 
         when:
@@ -146,6 +125,26 @@ class CollectionExampleTest extends Specification {
 
         result.get(6).getName() == "Sylwia"
         result.get(6).getAge() == 0
+    }
+
+    @Unroll
+    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #names"() {
+
+        when:
+        List<User> users = createUsersWithName(names as List<String>)
+        def result = collectionExample.getUsersWithSupplementedSexType(users)
+
+        then:
+        result == expected
+
+        where:
+        names                     | expected
+        ["Daniel"]                | [Sex.M]
+        ["Gosia"]                 | [Sex.F]
+        ["Gosia", "Daniel"]       | [Sex.F, Sex.M]
+        ["Gosia", null, "Daniel"] | [Sex.F, Sex.U, Sex.M]
+        [null]                    | [Sex.U]
+        []                        | []
     }
 
     static List<User> createUsersWithName(List<String> names) {
