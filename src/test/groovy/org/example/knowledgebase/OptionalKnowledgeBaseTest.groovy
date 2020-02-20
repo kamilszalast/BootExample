@@ -6,6 +6,7 @@ import spock.lang.Specification
 import spock.lang.Unroll
 
 class OptionalKnowledgeBaseTest extends Specification {
+    
     OptionalKnowledgeBase sut = []
 
     @Shared
