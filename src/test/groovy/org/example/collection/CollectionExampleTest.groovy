@@ -145,6 +145,7 @@ class CollectionExampleTest extends Specification {
         ["Gosia", null, "Daniel"] | [Sex.F, Sex.U, Sex.M]
         [null]                    | [Sex.U]
         []                        | []
+        ["Gosi@"] | [Sex.U]
     }
 
     static List<User> createUsersWithName(List<String> names) {

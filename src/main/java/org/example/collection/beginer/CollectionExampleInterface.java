@@ -32,7 +32,8 @@ public interface CollectionExampleInterface {
 
     /**
      * Metoda powinna zwrocic liste plci uzytkownikow. Zalozenie jest takie ze nazwa uzytkownika z suffixem -a oznacza kobiete w przeciwnym
-     * razie mezczyzne, a wartosci nierozpoznane jako Sex.U Kolejnosc elementow plci ma odpowiadac kolejnosci listy users.
+     * razie mezczyzne (jesli imie konczy sie litera), a wartosci nierozpoznane jako Sex.U Kolejnosc elementow plci ma odpowiadac kolejnosci
+     * listy users.
      */
     List<Sex> getUsersWithSupplementedSexType(List<User> users);
 }
