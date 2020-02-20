@@ -1,6 +1,6 @@
-package org.example.collection
+package org.example.collection.beginner
 
-import org.example.collection.beginer.CollectionsExample
+
 import org.example.dto.User
 import org.example.enums.Sex
 import spock.lang.Shared
@@ -12,7 +12,7 @@ import java.util.stream.Collectors
 
 class CollectionExampleTest extends Specification {
 
-    CollectionsExample collectionExample = []
+    CollectionsBeginnerExample collectionExample = []
 
     @Shared
     User daniel = new User("Daniel", Sex.M, 8)

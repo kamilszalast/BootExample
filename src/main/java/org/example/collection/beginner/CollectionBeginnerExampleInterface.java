@@ -1,4 +1,4 @@
-package org.example.collection.beginer;
+package org.example.collection.beginner;
 
 import java.util.List;
 import org.example.dto.User;
@@ -7,7 +7,7 @@ import org.example.enums.Sex;
 /**
  * Zadania polegajace na zrozumieniu kolekcji oraz operacji na nich
  */
-public interface CollectionExampleInterface {
+public interface CollectionBeginnerExampleInterface {
 
     /**
      * Metoda powinna zwrocic ilosc uzytkownikow plci zenskiej

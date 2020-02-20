@@ -1,4 +1,4 @@
-package org.example.collection.beginer;
+package org.example.collection.beginner;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.example.dto.User;
 import org.example.enums.Sex;
 
-public class CollectionsExample implements CollectionExampleInterface {
+public class CollectionsBeginnerExample implements CollectionBeginnerExampleInterface {
 
     /**
      * Nie poprawiajac testu nalezy poprawic kod tak aby testy przechodzily wszystkie na zielono. Kod przed refactorem:
