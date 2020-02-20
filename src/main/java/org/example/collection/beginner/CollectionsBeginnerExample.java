@@ -21,7 +21,7 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
-    public int countOfFemaleUsers(List<User> users) {
+    public int getCountOfFemaleUsers(List<User> users) {
         return 0;
     }
 
@@ -31,17 +31,17 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
-    public List<User> getAscendingSortedListByAge(List<User> users) {
+    public List<User> getNaturalSortedUsersByAge(List<User> users) {
         return Collections.emptyList();
     }
 
     @Override
-    public List<User> getUsersWithCorrectAge(List<User> users) {
+    public List<User> getUsersWithCorrectedAge(List<User> users) {
         return Collections.emptyList();
     }
 
     @Override
-    public List<Sex> getUsersWithSupplementedSexType(List<User> users) {
+    public List<Sex> getUsersWithCorrectedGender(List<User> users) {
         return Collections.emptyList();
     }
 }

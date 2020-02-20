@@ -52,7 +52,7 @@ class CollectionExampleTest extends Specification {
     def "Metoda countOfFemaleUsers powinna zwrocic #expected gdy lista sklada sie z #users"() {
 
         when:
-        def result = collectionExample.countOfFemaleUsers(users)
+        def result = collectionExample.getCountOfFemaleUsers(users)
 
         then:
         result == expected
@@ -85,7 +85,7 @@ class CollectionExampleTest extends Specification {
     def "Metoda getAscendingSortedListByAge powinna zwrocic #expected gdy lista to : #users"() {
 
         when:
-        def result = collectionExample.getAscendingSortedListByAge(users)
+        def result = collectionExample.getNaturalSortedUsersByAge(users)
 
         then:
         result == expected
@@ -102,7 +102,7 @@ class CollectionExampleTest extends Specification {
     def "Metoda getUsersWithCorrectAge"() {
 
         when:
-        List<User> result = collectionExample.getUsersWithCorrectAge(createUsersWithBirthDay())
+        List<User> result = collectionExample.getUsersWithCorrectedAge(createUsersWithBirthDay())
 
         then:
         result.get(0).getName() == "Daniel"
@@ -132,7 +132,7 @@ class CollectionExampleTest extends Specification {
 
         when:
         List<User> users = createUsersWithName(names as List<String>)
-        def result = collectionExample.getUsersWithSupplementedSexType(users)
+        def result = collectionExample.getUsersWithCorrectedGender(users)
 
         then:
         result == expected
