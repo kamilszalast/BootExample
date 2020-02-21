@@ -25,6 +25,13 @@ public interface CollectionBeginnerExampleInterface {
     List<User> getNaturalSortedUsersByAge(List<User> users);
 
     /**
+     * Metoda przyjmuje liste uzytkownikow posortowana wedlug nazwy. Nalezy nie naruszajac sortowania po pierwszej literze nazwy uzytkownika
+     * posortowac ich po wieku i zwrocic posortowana liste uzytkownikow. W przypadku gdy wiek jest rowny dla kilku osob ustawiamy je
+     * alfabetycznie, a wartosci nierozpoznane ustawiamy na koniec listy.
+     */
+    List<User> getUsersSortedByNameAndAge(List<User> users);
+
+    /**
      * Metoda powinna zwrocic liste uzytkownikow z uzupelnionym wiekiem. Kazdy uzytkownik ma pole LocalDate birthDay i na jego podstawie
      * uzupelniamy wiek uzytkownika. W sytuacji gdy today < birthday -> age = 0
      */

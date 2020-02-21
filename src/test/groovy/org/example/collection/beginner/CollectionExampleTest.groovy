@@ -1,6 +1,5 @@
 package org.example.collection.beginner
 
-
 import org.example.dto.User
 import org.example.enums.Sex
 import spock.lang.Shared
@@ -97,6 +96,48 @@ class CollectionExampleTest extends Specification {
         [daniel]                         | [daniel]
         [kamil, daniel, klaudia, null]   | [kamil, klaudia, daniel]
         null                             | []
+    }
+
+    @Shared
+    User ada18 = new User("Ada", 18)
+    @Shared
+    User agn16 = new User("Agnieszka", 16)
+    @Shared
+    User ald17 = new User("Aldona", 17)
+    @Shared
+    User dam18 = new User("Damian", 18)
+    @Shared
+    User dan16 = new User("Daniel", 16)
+    @Shared
+    User dag16 = new User("Dagmara", 16)
+    @Shared
+    User mac16 = new User("Maciek", 16)
+    @Shared
+    User mar17 = new User("Marek", 17)
+    @Shared
+    User mon18 = new User("Monika", 18)
+
+    @Unroll
+    def "Metoda getSortedUsers powinna zwrocic #expected dla parametru #users"() {
+
+        when:
+        def result = collectionExample.getUsersSortedByNameAndAge(users)
+
+        then:
+        result == expected
+
+        where:
+        users                                                                       | expected
+        []                                                                          | []
+        [ada18, agn16]                                                              | [agn16, ada18]
+        [dag16, dan16]                                                              | [dag16, dan16]
+        [ada18, null, agn16]                                                        | [agn16, ada18, null]
+        [ada18, agn16, ald17]                                                       | [agn16, ald17, ada18]
+        [dag16, dam18, dan16]                                                       | [dag16, dan16, dam18]
+        [ada18, agn16, ald17, dag16, dam18, dan16, mac16, mar17, mon18]             | [agn16, ald17, ada18, dag16, dan16, dam18, mac16, mar17, mon18]
+        [ada18, agn16, null, ald17, dag16, dam18, dan16, null, mac16, mar17, mon18] | [agn16, ald17, ada18, dag16, dan16, dam18, mac16, mar17, mon18, null, null]
+        [null]                                                                      | [null]
+        null                                                                        | []
     }
 
     def "Metoda getUsersWithCorrectAge"() {

@@ -36,6 +36,11 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
+    public List<User> getUsersSortedByNameAndAge(List<User> users) {
+        return Collections.emptyList();
+    }
+
+    @Override
     public List<User> getUsersWithCorrectedAge(List<User> users) {
         return Collections.emptyList();
     }

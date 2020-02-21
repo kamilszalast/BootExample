@@ -10,6 +10,12 @@ public class User {
     private Sex sex;
     private int age;
 
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.birthday = LocalDate.now();
+    }
+
     public User(String name) {
         this.name = name;
         this.birthday = LocalDate.now();
