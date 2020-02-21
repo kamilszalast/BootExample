@@ -1,9 +1,10 @@
 package testutils
 
-import org.example.dto.Product
-import org.example.dto.Store
 
-class StoreUtils {
+import org.example.dto.Store
+import spock.lang.Specification
+
+class StoreUtilsForTests extends Specification {
 
     public static final String ZABKA = "Zabka"
     public static final String BIEDRONA = "Biedrona"
@@ -23,7 +24,7 @@ class StoreUtils {
     }
 
     static Store createStoreWithRandomName(int productsIndex) {
-        return isValidIndex(productsIndex) ? new Store(ProductUtils.getProducts(productsIndex), getRandomStoreName()) : null
+        return isValidIndex(productsIndex) ? new Store(ProductUtilsForTests.getProducts(productsIndex), getRandomStoreName()) : null
     }
 
     static List<Store> createStoresWithRandomNames(Integer... productsIndex) {
@@ -34,9 +35,5 @@ class StoreUtils {
 
     private static boolean isValidIndex(int index) {
         return index >= 0 && index < 10
-    }
-
-    static Store createStore(String storeName, List<Product> products) {
-        return new Store(products, storeName)
     }
 }

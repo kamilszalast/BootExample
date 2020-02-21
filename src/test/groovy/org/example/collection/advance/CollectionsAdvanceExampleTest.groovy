@@ -6,8 +6,8 @@ import org.example.dto.Store
 import org.example.exception.BootExampleException
 import spock.lang.Specification
 import spock.lang.Unroll
-import testutils.ProductUtils
-import testutils.StoreUtils
+import testutils.ProductUtilsForTests
+import testutils.StoreUtilsForTests
 
 class CollectionsAdvanceExampleTest extends Specification {
 
@@ -17,7 +17,7 @@ class CollectionsAdvanceExampleTest extends Specification {
     def "Method getTheMostAvailableProductFromStore should return #expected and no thrown exception"() {
 
         when:
-        Store store = StoreUtils.createStoreWithRandomName(productIndex)
+        Store store = StoreUtilsForTests.createStoreWithRandomName(productIndex)
         def result = sut.getTheMostAvailableProductFromStore(store)
 
         then:
@@ -26,22 +26,22 @@ class CollectionsAdvanceExampleTest extends Specification {
 
         where:
         productIndex | expected
-        0            | ProductUtils.createSingleProduct(ProductUtils.VIDEO_GAME)
-        2            | ProductUtils.createSingleProduct(ProductUtils.COMPUTER)
-        3            | ProductUtils.createSingleProduct(ProductUtils.BIKE)
-        4            | ProductUtils.createSingleProduct(ProductUtils.BOOK)
-        5            | ProductUtils.createSingleProduct(ProductUtils.CAR)
-        6            | ProductUtils.createSingleProduct(ProductUtils.KNIFE)
-        7            | ProductUtils.createSingleProduct(ProductUtils.MIRROR)
-        8            | ProductUtils.createSingleProduct(ProductUtils.BIKE)
-        9            | ProductUtils.createSingleProduct(ProductUtils.FLOWER)
+        0            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.VIDEO_GAME)
+        2            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.COMPUTER)
+        3            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.BIKE)
+        4            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.BOOK)
+        5            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.CAR)
+        6            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.KNIFE)
+        7            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.MIRROR)
+        8            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.BIKE)
+        9            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.FLOWER)
     }
 
     @Unroll
     def "Method getTheMostAvailableProductFromStore should thrown BootExampleException with message: #expectExceptionMessage"() {
 
         when:
-        Store store = StoreUtils.createStoreWithRandomName(productIndex)
+        Store store = StoreUtilsForTests.createStoreWithRandomName(productIndex)
         sut.getTheMostAvailableProductFromStore(store)
 
         then:
@@ -58,7 +58,7 @@ class CollectionsAdvanceExampleTest extends Specification {
     def "Method getTheMostAvailableProductFromMall should return #expected and no thrown exception"() {
 
         when:
-        List<Store> stores = StoreUtils.createStoresWithRandomNames(productIndexs as Integer[])
+        List<Store> stores = StoreUtilsForTests.createStoresWithRandomNames(productIndexs as Integer[])
         Mall mall = new Mall(stores)
         def result = sut.getTheMostAvailableProductFromMall(mall)
 
@@ -68,17 +68,17 @@ class CollectionsAdvanceExampleTest extends Specification {
 
         where:
         productIndexs                  | expected
-        [3]                            | ProductUtils.createSingleProduct(ProductUtils.BIKE)
-        [2, 3]                         | ProductUtils.createSingleProduct(ProductUtils.COMPUTER)
-        [0, 1, 5, 2]                   | ProductUtils.createSingleProduct(ProductUtils.CAR)
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | ProductUtils.createSingleProduct(ProductUtils.CAR)
+        [3]                            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.BIKE)
+        [2, 3]                         | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.COMPUTER)
+        [0, 1, 5, 2]                   | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.CAR)
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.CAR)
     }
 
     @Unroll
     def "Method getTheMostAvailableProductFromMall should thrown BootExampleException with message: #expectExceptionMessage"() {
 
         when:
-        List<Store> stores = StoreUtils.createStoresWithRandomNames(productIndexs as Integer[])
+        List<Store> stores = StoreUtilsForTests.createStoresWithRandomNames(productIndexs as Integer[])
         Mall mall = new Mall(stores)
         sut.getTheMostAvailableProductFromMall(mall)
 

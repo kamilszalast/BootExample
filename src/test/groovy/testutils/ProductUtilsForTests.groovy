@@ -1,8 +1,9 @@
 package testutils
 
 import org.example.dto.Product
+import spock.lang.Specification
 
-class ProductUtils {
+class ProductUtilsForTests extends Specification {
 
     public static final String CHOCOLATE = "Chocolate"
     public static final String JUICE = "Juice"
