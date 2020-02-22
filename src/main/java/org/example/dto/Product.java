@@ -12,11 +12,6 @@ public class Product {
     private LocalDate expiryDate;
     private LocalDateTime madeDate;
 
-    public Product(String productName) {
-        this.productName = productName;
-        this.company = new Company();
-    }
-
     public Product(String productName, Company company, Integer price, LocalDate expiryDate, LocalDateTime madeDate) {
         this.productName = productName;
         this.company = company;

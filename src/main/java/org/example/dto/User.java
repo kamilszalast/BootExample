@@ -1,38 +1,34 @@
 package org.example.dto;
 
 import java.time.LocalDate;
+import java.util.Objects;
+
 import org.example.enums.Sex;
 
 public class User {
 
     private final String name;
-    private final LocalDate birthday;
+    private final LocalDate birthDay;
     private Sex sex;
     private int age;
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
-        this.birthday = LocalDate.now();
-    }
-
     public User(String name) {
         this.name = name;
-        this.birthday = LocalDate.now();
+        this.birthDay = LocalDate.now();
     }
 
     public User(String name, Sex sex, int age) {
         this.name = name;
         this.sex = sex;
         this.age = age;
-        this.birthday = LocalDate.now();
+        this.birthDay = LocalDate.now();
     }
 
-    public User(String name, LocalDate birthday) {
+    public User(String name, LocalDate birthDay) {
         this.name = name;
         this.sex = Sex.U;
         this.age = 1;
-        this.birthday = birthday;
+        this.birthDay = birthDay;
     }
 
     @Override
@@ -40,8 +36,8 @@ public class User {
         return name;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDate getBirthDay() {
+        return birthDay;
     }
 
     public String getName() {
@@ -64,4 +60,19 @@ public class User {
         this.age = age;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return age == user.age &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(birthDay, user.birthDay) &&
+                sex == user.sex;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, birthDay, sex, age);
+    }
 }
