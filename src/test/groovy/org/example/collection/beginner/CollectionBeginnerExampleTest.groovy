@@ -169,7 +169,7 @@ class CollectionBeginnerExampleTest extends Specification {
     }
 
     @Unroll
-    def "Metoda getUsersWithSupplementedSexType powinna zwrocic #expected gdy lista to : #names"() {
+    def "Metoda getUsersWithCorrectedGender powinna zwrocic #expected gdy lista to : #names"() {
 
         when:
         List<User> users = createUsersWithName(names as List<String>)
