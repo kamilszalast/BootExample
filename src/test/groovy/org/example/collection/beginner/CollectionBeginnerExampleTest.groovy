@@ -9,7 +9,7 @@ import spock.lang.Unroll
 import java.time.LocalDate
 import java.util.stream.Collectors
 
-class CollectionExampleTest extends Specification {
+class CollectionBeginnerExampleTest extends Specification {
 
     CollectionsBeginnerExample collectionExample = []
 

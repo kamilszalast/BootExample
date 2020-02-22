@@ -71,7 +71,7 @@ class CollectionsAdvanceExampleTest extends Specification {
         [3]                            | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.BIKE)
         [2, 3]                         | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.COMPUTER)
         [0, 1, 5, 2]                   | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.CAR)
-        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.CAR)
+        [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | ProductUtilsForTests.createSingleProduct(ProductUtilsForTests.MIRROR)
     }
 
     @Unroll
@@ -87,8 +87,8 @@ class CollectionsAdvanceExampleTest extends Specification {
         ex.getMessage() == expectExceptionMessage
 
         where:
-        productIndexs | expectExceptionMessage
-        [-1]          | BootExampleUtils.NO_PRODUCT_FOUND
-        [8, 9]        | BootExampleUtils.MORE_THAN_ONE_PRODUCT_FOUND
+        productIndexs               | expectExceptionMessage
+        [-1]                        | BootExampleUtils.NO_PRODUCT_FOUND
+        [0, 1, 2, 3, 4, 5, 6, 7, 8] | BootExampleUtils.MORE_THAN_ONE_PRODUCT_FOUND
     }
 }
