@@ -25,7 +25,7 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
-    public int countOfFemaleUsers(List<User> users) {
+    public int getCountOfFemaleUsers(List<User> users) {
 /*        long currentTime = System.currentTimeMillis();
         int female_Counter=0;
         for (int i=0; i<users.size(); i++){
@@ -52,7 +52,7 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
-    public List<User> getAscendingSortedListByAge(List<User> users) {
+    public List<User> getNaturalSortedUsersByAge(List<User> users) {
         users = Optional.ofNullable(users)
                 .orElse(Collections.emptyList())
                 .stream()
@@ -70,7 +70,7 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
 
     // map dziala tak ze przyjmuje cokolwiek zwraca cokolwiek
     @Override
-    public List<User> getUsersWithCorrectAge(List<User> users) {
+    public List<User> getUsersWithCorrectedAge(List<User> users) {
         return users.stream()
                 .map(this::ageFromDate)
                 .collect(Collectors.toList());
@@ -87,7 +87,7 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     @Override
-    public List<Sex> getUsersWithSupplementedSexType(List<User> users) {
+    public List<Sex> getUsersWithCorrectedGender(List<User> users) {
         return Optional.ofNullable(users)
                 .orElse(Collections.emptyList())
                 .stream()
@@ -103,6 +103,10 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
         else if (Character.isLetter(user.getName().charAt(user.getName().length()-1)))
             return Sex.M;
         else return Sex.U;
+    }
+
+    public List<User> getUsersSortedByNameAndAge(List<User> users){
+        return Collections.emptyList();
     }
 
 }
