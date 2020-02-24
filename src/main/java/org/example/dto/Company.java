@@ -4,10 +4,15 @@ import java.util.Objects;
 
 public class Company {
 
+    private static final String DEFAULT_COMPANY_NAME = "NO NAME COMPANY";
     private final String companyName;
 
     public Company(String companyName) {
         this.companyName = companyName;
+    }
+
+    public Company() {
+        this.companyName = DEFAULT_COMPANY_NAME;
     }
 
     @Override
