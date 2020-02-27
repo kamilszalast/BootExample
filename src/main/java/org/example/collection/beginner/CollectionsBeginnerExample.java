@@ -95,18 +95,74 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
                 .collect(Collectors.toList());
     }
 
-    private Sex sexFromName(@Nullable  User user) {
+    private Sex sexFromName(@Nullable User user) {
         if (user == null)
-            return Sex.U;        
+            return Sex.U;
         else if (user.getName().charAt(user.getName().length() - 1) == 'a')
             return Sex.F;
-        else if (Character.isLetter(user.getName().charAt(user.getName().length()-1)))
+        else if (Character.isLetter(user.getName().charAt(user.getName().length() - 1)))
             return Sex.M;
         else return Sex.U;
     }
 
-    public List<User> getUsersSortedByNameAndAge(List<User> users){
-        return Collections.emptyList();
+    public List<User> getUsersSortedByNameAndAge(List<User> users) {
+            //zliczenie i usuniecie nulli
+            users = Optional.ofNullable(users)
+                .orElse(Collections.emptyList());
+            int NullNumber = NullNumber(users);
+            users.removeAll(Collections.singleton(null));
+
+            Comparator<User> byAge = Comparator.comparing(User::getAge);
+            Comparator<User> byName = Comparator.comparing(user -> user.getName().charAt(0));
+            users.sort(byName.thenComparing(byAge));
+
+            //i dodanie nulli
+            for (int i = 0; i < NullNumber; i++) {
+                users.add(null);
+            }
+
+        return users;
+        }
+
+    public int NullNumber(List<User> users) {
+        return Math.toIntExact(users.stream().filter(Objects::isNull).count());
     }
+/*
+        List<User> TempList = new ArrayList<>();
+        List<User> ReturnedList = new ArrayList<>();
+
+        ArrayList<List<User>> ListsOfLists = new ArrayList<>();
+        int NullNumber = NullNumber(users);
+        while (users.remove(null)) {
+        }
+
+        int j = 0;
+        TempList.add(users.get(0));
+        ListsOfLists.add(TempList);
+        for (int i = 0; i < users.size() - 1; i++) {
+            //ta lista juz nie ma nulli wiec nie trzeba ich uwzgledniac
+            if (users.get(i).getName().charAt(0) == users.get(i++).getName().charAt(0)) {
+                ListsOfLists.get(j).add(users.get(i++));
+            } else {
+                j++;
+                ListsOfLists.get(j).add(users.get(i++));
+            }
+        }
+
+        //dodanie nulli na koniec ostatniej listy
+        for (int i = 0; i < NullNumber; i++) {
+            ListsOfLists.get(j) = ListsOfLists.get(j).stream()
+                    .sorted(Comparator.comparingInt(User::getAge))
+                    .collect(Collectors.toList());
+
+            ListsOfLists.get(j).add(null);
+        }
+        //zwrocenie wszystkich elementow jako jednej listy
+        return ListsOfLists.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+*/
+
+
 
 }
