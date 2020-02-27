@@ -106,27 +106,23 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
     }
 
     public List<User> getUsersSortedByNameAndAge(List<User> users) {
-            //zliczenie i usuniecie nulli
-            users = Optional.ofNullable(users)
+        //zliczenie i usuniecie nulli
+        users = Optional.ofNullable(users)
                 .orElse(Collections.emptyList());
-            int NullNumber = NullNumber(users);
-            users.removeAll(Collections.singleton(null));
+        int NullNumber = Collections.frequency(users,null);
+        users.removeAll(Collections.singleton(null));
 
-            Comparator<User> byAge = Comparator.comparing(User::getAge);
-            Comparator<User> byName = Comparator.comparing(user -> user.getName().charAt(0));
-            users.sort(byName.thenComparing(byAge));
+        Comparator<User> byAge = Comparator.comparing(User::getAge);
+        Comparator<User> byName = Comparator.comparing(user -> user.getName().charAt(0));
+        users.sort(byName.thenComparing(byAge));
 
-            //i dodanie nulli
-            for (int i = 0; i < NullNumber; i++) {
-                users.add(null);
-            }
-
-        return users;
+        //i dodanie nulli
+        for (int i = 0; i < NullNumber; i++) {
+            users.add(null);
         }
-
-    public int NullNumber(List<User> users) {
-        return Math.toIntExact(users.stream().filter(Objects::isNull).count());
+        return users;
     }
+
 /*
         List<User> TempList = new ArrayList<>();
         List<User> ReturnedList = new ArrayList<>();
@@ -162,7 +158,6 @@ public class CollectionsBeginnerExample implements CollectionBeginnerExampleInte
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
 */
-
 
 
 }
